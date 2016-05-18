@@ -20,4 +20,15 @@ feature 'studios' do
       expect(page).not_to have_content('No studios yet')
     end
   end
+
+  context 'creating studios' do
+    scenario 'prompts user to fill out a form, the displays new studio' do
+      visit '/studios'
+      click_link 'Add a studio'
+      fill_in 'Name', with: 'Premises'
+      click_button 'Create Studio'
+      expect(page).to have_content('Premises')
+      expect(current_path).to eq '/studios'
+    end
+  end
 end
