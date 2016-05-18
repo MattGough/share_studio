@@ -4,6 +4,19 @@
     <%= link_to "Edit #{studio.name}", edit_studio_path(studio) %>
     <%= link_to "Delete #{studio.name}", studio_path(studio), method: :delete %>
     <%= link_to "Review #{studio.name}", new_studio_review_path(studio) %>
+    <h3>Reviews for <%= studio.name %></h3>
+
+    <% if studio.reviews.any? %>
+      <ul>
+        <% studio.reviews.each do |review| %>
+          <li>
+            <%= review.thoughts %>, <strong><%= review.rating %></strong>/5
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No reviews.</p>
+    <% end %>
   <% end %>
 <% else %>
   <h1>No studios yet</h1>

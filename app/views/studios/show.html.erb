@@ -1,2 +1,15 @@
 <p><%= @studio.name %></p>
 <p><%= @studio.description %></p>
+<h3>Reviews for <%= @studio.name %></h3>
+
+<% if @studio.reviews.any? %>
+  <ul>
+    <% @studio.reviews.each do |review| %>
+      <li>
+        <%= review.thoughts %>, <strong><%= review.rating %></strong>/5
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No reviews.</p>
+<% end %>
