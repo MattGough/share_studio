@@ -1,2 +1,9 @@
-No studios yet!
+<% if @studios.any? %>
+  <% @studios.all.each do |studio| %>
+    <h2><%= studio.name %></h2>
+  <% end %>
+<% else %>
+  <h1>No studios yet</h1>
+<%end%>
+
 <a href="#">Add a studio</a>
