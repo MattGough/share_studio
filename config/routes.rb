@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
    get 'studios' => 'studios#index'
-   resources :studios
+   resources :studios do
+     resources :reviews
+   end
 end
