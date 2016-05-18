@@ -43,4 +43,18 @@ feature 'studios' do
       expect(current_path).to eq "/studios/#{premises.id}"
     end
   end
+
+  context 'editing studios' do
+
+    before { Studio.create name: 'Premises'}
+
+    scenario 'let a user edit a studio' do
+      visit '/studios'
+      click_link 'Edit Premises'
+      fill_in 'Name', with: 'The Premises Studios'
+      click_button 'Update Studio'
+      expect(page).to have_content 'The Premises Studios'
+      expect(current_path).to eq '/studios'
+    end
+  end
 end

@@ -1,6 +1,7 @@
 <% if @studios.any? %>
   <% @studios.all.each do |studio| %>
     <h2><%= link_to studio.name, studio_path(studio) %></h2>
+    <%= link_to "Edit #{studio.name}", edit_studio_path(studio) %>
   <% end %>
 <% else %>
   <h1>No studios yet</h1>
