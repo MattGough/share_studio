@@ -12,6 +12,10 @@ class StudiosController < ApplicationController
     redirect_to '/studios'
   end
 
+  def show
+    @studio = Studio.find(params[:id])
+  end
+
   def studio_params
     params.require(:studio).permit(:name)
   end

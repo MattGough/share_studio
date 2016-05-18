@@ -31,4 +31,16 @@ feature 'studios' do
       expect(current_path).to eq '/studios'
     end
   end
+
+  context 'viewing studios' do
+
+    let!(:premises){ Studio.create(name: 'Premises') }
+
+    scenario 'lets a user view a studio' do
+      visit '/studios'
+      click_link 'Premises'
+      expect(page).to have_content 'Premises'
+      expect(current_path).to eq "/studios/#{premises.id}"
+    end
+  end
 end
