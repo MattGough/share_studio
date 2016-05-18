@@ -26,6 +26,13 @@ class StudiosController < ApplicationController
     redirect_to '/studios'
   end
 
+  def destroy
+    @studio = Studio.find(params[:id])
+    @studio.destroy
+    flash[:notice] = "Studio deleted successfully"
+    redirect_to '/studios'
+  end
+
   def studio_params
     params.require(:studio).permit(:name)
   end

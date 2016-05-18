@@ -57,4 +57,16 @@ feature 'studios' do
       expect(current_path).to eq '/studios'
     end
   end
+
+  context 'deleting studios' do
+
+    before { Studio.create name: 'Premises'}
+
+    scenario 'removes a studio when a user clicks a delete link' do
+      visit '/studios'
+      click_link 'Delete Premises'
+      expect(page).not_to have_content 'Premises'
+      expect(page).to have_content 'Studio deleted successfully'
+    end
+  end
 end

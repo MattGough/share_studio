@@ -2,6 +2,7 @@
   <% @studios.all.each do |studio| %>
     <h2><%= link_to studio.name, studio_path(studio) %></h2>
     <%= link_to "Edit #{studio.name}", edit_studio_path(studio) %>
+    <%= link_to "Delete #{studio.name}", studio_path(studio), method: :delete %>
   <% end %>
 <% else %>
   <h1>No studios yet</h1>
